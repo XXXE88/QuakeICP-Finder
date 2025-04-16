@@ -268,7 +268,7 @@ def summarize_cache_file():
     total_records = 0
 
     # 按公司名称排序输出
-    for company_name in sorted(cache_data.keys()):
+    for company_name in (cache_data.keys()):
         icp_list = cache_data[company_name]
         print(f"\n--- 公司: {company_name} ---")
         total_companies += 1

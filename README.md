@@ -37,7 +37,7 @@ python3 QuakeICP-Finder.py --search qihoo.cn //模糊搜索
 1.  **Python 环境:** 确保你的系统中安装了 Python 3 (推荐 Python 3.6 或更高版本)。
 2.  **安装依赖库:** 脚本需要 `requests` 库来发送 API 请求。打开你的终端或命令行，运行以下命令安装：
     ```bash
-    pip install requests
+    pip install -r requirements.txt
     ```
 3.  **获取 Quake API Key:**
     *   登录 Quake 系统 ([https://quake.360.net/](https://quake.360.net/))。

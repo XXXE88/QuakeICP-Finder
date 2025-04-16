@@ -97,7 +97,7 @@ def get_company_icp_info_cached_iterative(api_key: str, company_name: str) -> Op
     # 这个集合用于构建排除查询语句，仍然需要域名
     found_domains_for_exclusion: Set[str] = set(obj.get('domain') for obj in cached_icp_list if obj.get('domain'))
     print(
-        f"[缓存] 加载到 {len(session_domains)} 个缓存备案记录 (对应 {len(found_domains_for_exclusion)} 个域名用于初始排除)。")
+        f"[缓存] 加载到 {len(session_domains)} 个缓存备案记录")
 
 
     found_mismatched_domains: Set[str] = set()
@@ -125,7 +125,7 @@ def get_company_icp_info_cached_iterative(api_key: str, company_name: str) -> Op
             exclude_clause = f' AND NOT (domain:{" OR domain:".join(escaped_domains)})'
 
         final_query = base_query + exclude_clause
-        print(f"[*] 第 {iteration + 1} 次迭代查询 (排除 {len(all_domains_to_exclude)} 个已知域名)...")
+        print(f"[*] 第 {iteration + 1} 次迭代查询")
 
         payload = {
             "query": final_query,
@@ -208,7 +208,7 @@ def get_company_icp_info_cached_iterative(api_key: str, company_name: str) -> Op
                     continue
 
             print(
-                f"[*]   本批次处理完毕：发现 {batch_new_records_count} 个新备案记录 (主体精确匹配)，发现 {batch_mismatched_domains_count} 个新的不匹配主体域名用于后续排除。")
+                f"[*]   本批次处理完毕：发现 {batch_new_records_count} 个新备案记录。")
 
 
             # if not new_record_found_this_iteration and count_in_batch > 0:
@@ -474,7 +474,7 @@ if __name__ == "__main__":
         if icp_list is not None:
             success_count += 1
             if icp_list:
-                print(f"[*] 查询成功，共找到 {len(icp_list)} 条唯一域名的 ICP 记录 (主体精确匹配，按备案号升序):")
+                print(f"[*] 查询成功，共找到 {len(icp_list)} 条唯一域名的 ICP 记录:")
                 sorted_icp_list = sorted(icp_list, key=lambda x: x.get('licence', ''))
                 for icp_info in sorted_icp_list:
                     print(f"  - 域名: {icp_info.get('domain', 'N/A')}, 备案号: {icp_info.get('licence', 'N/A')}")

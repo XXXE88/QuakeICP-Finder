@@ -42,7 +42,7 @@ python3 QuakeICP-Finder.py --search qihoo.cn //模糊搜索
 3.  **获取 Quake API Key:**
     *   登录 Quake 系统 ([https://quake.360.net/](https://quake.360.net/))。
     *   进入“个人中心”。
-    *   找到并复制你的 API Key。这是一个类似 UUID 的字符串。
+    *   找到并复制你的 API Key。
 
 **二、 配置 API Key (重要！)**
 
